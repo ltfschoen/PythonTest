@@ -5,11 +5,12 @@ import time
 import webbrowser
 
 # SHOW INFO
-print ("System path: %s") % (sys.path[0]+'/helpers')
+print ("System path: %s") % (sys.path)
 print ("Env keys: %s") % (os.environ.keys())
 
 # IMPORT CUSTOM FILES
-import site  
+import site
+print ("Importing subfolder: %s") % (sys.path[0]+'/helpers')
 site.addsitedir(sys.path[0]+'/helpers')  
 import reusable
 
