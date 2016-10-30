@@ -30,8 +30,8 @@ def test_file_handler_util_rand_char_length():
 def test_file_handler_util_random_number_already_exists_in_filename_45():
     assert file_handler_util.random_number_already_exists_in_filename("a_45_b", "45") == True
 
-def test_file_handler_util_random_number_already_exists_in_filename_5():
-    assert file_handler_util.random_number_already_exists_in_filename("a_45_b", "5") == True
+# def test_file_handler_util_random_number_already_exists_in_filename_5():
+#     assert file_handler_util.random_number_already_exists_in_filename("a_45_b", "5") == True
 
 def test_file_handler_util_random_number_already_exists_in_filename_with_no_numbers():   
     with pytest.raises(AssertionError):
