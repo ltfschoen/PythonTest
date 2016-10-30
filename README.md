@@ -10,12 +10,19 @@ pip install pydash
 pip install -U pytest
 ```
 
-# Run sample programs written in Python 2.7
+# Run sample programs
+- Written in Python 2.7
 ```
 python ./break_time.py
 python ./file_handler.py
 ```
 
-# Run unit tests using [PyTest library](http://doc.pytest.org/)
+# Run unit tests
+- Using [PyTest library](http://doc.pytest.org/)
+```
+pytest
+```
 
-# Reference: Programming Foundations with Python at Udacity
+# References
+- Note: Most examples are based on Programming Foundations with Python at Udacity
+- Note: Custom addons include separation into multiple files and PyDash and PyTest integration
