@@ -1,6 +1,13 @@
 # PythonTest
 Learning Python
 
+# Setup
+```
+git clone https://github.com/ltfschoen/PythonTest && cd PythonTest
+brew install python
+pip install pydash
+```
+
 # Run scripts
 ```
 python ./break_time.py

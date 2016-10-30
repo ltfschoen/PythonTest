@@ -16,8 +16,19 @@ def random_number_already_exists_in_filename(filename, random_filename_suffix):
     # suffix_matches_found = py_(randfile_ints_found).map(lambda x: x == random_filename_suffix).each(print).value()
     suffix_matches_found = py_(randfile_ints_found).map(lambda x: x == random_filename_suffix).each().value()
     print("Numbers in filename matching proposed new random no: %s") % (suffix_matches_found)
+    assert (len(suffix_matches_found) > 0), 'Filename does not contain any numbers!'
     return True if any(element for element in suffix_matches_found) else False
 
+def remove_numbers_from_filename_and_append_rand_int(filename, random_filename_suffix):
+    return filter(lambda f: f.isalpha(), filename) + random_filename_suffix
+
+def replace_non_numbers_with_rand_chars(new_filename_random_no):
+    return re.sub("[^-0-9\/]+", random_char(5), new_filename_random_no)
+
+def rename_filename(samples_folder_name, samples_absolute_path, filename, new_filename):
+    os.rename(samples_absolute_path + filename, samples_absolute_path + new_filename)
+    return os.listdir(''.join(['./', samples_folder_name]))
+    
 def rename_files():
     # get filenames from folder
     current_directory = os.getcwd()
@@ -36,14 +47,9 @@ def rename_files():
         while random_number_already_exists_in_filename(filename, random_filename_suffix):
             random_filename_suffix = str(randint(0,99))
             
-        # remove all numbers from filename and append random integer
-        new_filename_random_no = filter(lambda f: f.isalpha(), filename) + random_filename_suffix
-
-        # new filename with non-numbers replaced with random string of characters
-        new_filename = re.sub("[^-0-9\/]+", random_char(5), new_filename_random_no)
-
-        os.rename(samples_absolute_path + filename, samples_absolute_path + new_filename)
-        updated_file_list = os.listdir(''.join(['./', samples_folder_name]))
+        new_filename_random_no = remove_numbers_from_filename_and_append_rand_int(filename, random_filename_suffix)
+        new_filename = replace_non_numbers_with_rand_chars(new_filename_random_no)
+        updated_file_list = rename_filename(samples_folder_name, samples_absolute_path, filename, new_filename)
         print("After - Index: %s, Filename: %s") % (index, updated_file_list[index])
 
 rename_files()
