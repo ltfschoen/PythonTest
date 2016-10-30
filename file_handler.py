@@ -1,15 +1,17 @@
 # PyDash
 from pydash import py_
+import sys
 import os
 from os import listdir
 from os import path
 from random import randint
 import re # regular expressions
-import random
-import string
 
-def random_char(char_qty):
-    return ''.join(random.choice(string.ascii_letters) for char in range(char_qty))
+# IMPORT CUSTOM FILES
+import site
+print ("Importing subfolder: %s") % (sys.path[0]+'/util')
+site.addsitedir(sys.path[0]+'/util')  
+import file_handler_util
 
 def random_number_already_exists_in_filename(filename, random_filename_suffix):
     randfile_ints_found = re.findall('\d+', filename) # array of numbers found in filename
@@ -23,7 +25,7 @@ def remove_numbers_from_filename_and_append_rand_int(filename, random_filename_s
     return filter(lambda f: f.isalpha(), filename) + random_filename_suffix
 
 def replace_non_numbers_with_rand_chars(new_filename_random_no):
-    return re.sub("[^-0-9\/]+", random_char(5), new_filename_random_no)
+    return re.sub("[^-0-9\/]+", file_handler_util.random_char(5), new_filename_random_no)
 
 def rename_filename(samples_folder_name, samples_absolute_path, filename, new_filename):
     os.rename(samples_absolute_path + filename, samples_absolute_path + new_filename)
