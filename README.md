@@ -20,7 +20,7 @@ python ./file_handler.py
 # Run unit tests
 - Using [PyTest library](http://doc.pytest.org/)
 ```
-pytest
+pytest -v
 ```
 
 # References

@@ -13,7 +13,16 @@ print ("Importing subfolder: %s") % (main_path+'/util')
 site.addsitedir(main_path+'/util')  
 import file_handler_util
 
-# UNIT TESTS
+# UNIT TESTS - EXPERIMENTAL
+
+@pytest.fixture()
+def before():
+    print('\nbefore test')
+
+def test_fixture_sample_1(before):
+    print('\ntest_fixture_sample_1')
+
+# UNIT TESTS - ACTUAL
 
 def test_file_handler_util_rand_char_length():
     assert len(file_handler_util.random_char(3)) == 3
