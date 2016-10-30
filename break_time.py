@@ -1,5 +1,17 @@
+# IMPORT
+import sys
+import os
 import time
 import webbrowser
+
+# SHOW INFO
+print ("System path: %s") % (sys.path[0]+'/helpers')
+print ("Env keys: %s") % (os.environ.keys())
+
+# IMPORT CUSTOM FILES
+import site  
+site.addsitedir(sys.path[0]+'/helpers')  
+import reusable
 
 again = "y"
 break_limit = 3
@@ -10,14 +22,14 @@ while again == "y" and break_count < break_limit:
     time.sleep(3) # seconds
     print("You have %s remaining breaks to take advantage of!") % (remaining)
     if remaining == break_limit:
-        print("Note: Don't let the client perceive you to be working too hard as their expectations will increase and your colleagues won't like it.")
+        print(reusable.messages['exit_exhausted_breaks'])
     again = raw_input("Take another break? y/n >>>")
     if again != "y":
-        print("Come back to a sustainable workplace with a flexible working hours  with breaks to give you a work life balance...")
+        print(reusable.messages['exit_request_no_more_breaks'])
     else:
-        webbrowser.open("https://stackoverflow.com/users/3208553/luke-schoen")
+        webbrowser.open(reusable.urls['so'])
         break_count += 1
         remaining -= 1
-print("Unfortunately we'll have to let you go as you took your allocated breaks but we actually don't have the budget for that, sorry...")
+print(reusable.messages['exit_common_message'])
 
 
