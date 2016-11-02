@@ -59,7 +59,7 @@ def rand_dims():
 
 def generate_rand_boundary(current_bgcolor):
     bounds_w, bounds_h = rand_dims(), rand_dims()
-    boundary = turtle.Turtle()
+    boundary = turtle.Turtle() # boundary instance
     boundary.color(current_bgcolor)
     boundary.goto(-bounds_w/2, bounds_h/2)
     boundary.shape("arrow")
@@ -83,7 +83,7 @@ def draw_art():
         canvas.bgcolor(current_bgcolor)
         bounds_w, bounds_h = generate_rand_boundary(current_bgcolor)
         start_position_x, start_position_y = calculate_start_position_for_canvas(bounds_w, bounds_h)
-        player1 = turtle.Turtle()
+        player1 = turtle.Turtle() # instance. within Python there is a file called turtle with a Turtle class. We call its __init__ function to create an instance of it
         player1.shape("turtle")
         player1.color(generate_rand_color())
         player1.speed("0") # very fast
