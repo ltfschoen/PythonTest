@@ -39,6 +39,7 @@ echo $PYTHONPATH
 python ./break_time.py
 python ./file_handler.py
 python ./movie_set/main.py
+python profanity_detector/main.py
 ```
 
 - Create a file .env and add contents 
