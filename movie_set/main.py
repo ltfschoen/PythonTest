@@ -19,6 +19,14 @@ from helpers import reusable # __init__.py required in the helpers subdirectory
 # Settings
 REPLAY_QTY = 100
 SHAPE = reusable.shape["rectangle"]
+# Example ROTATION_FACTOR values:
+# 0.5: rotate around 18 times every 20 degrees
+# 1: rotate around 36 times every 10 degrees
+# 2: rotate around 72 times every 5 degrees
+ROTATION_FACTOR = 0.75
+
+ROTATIONS = int(36 * ROTATION_FACTOR)
+ANGLE = int(10 / ROTATION_FACTOR)
 
 def draw_boundary(boundary_drawer, distance_x, distance_y):
     distance = distance_x
@@ -63,19 +71,9 @@ def generate_rand_boundary(current_bgcolor):
     return bounds_w, bounds_h
 
 # randomly generate an integer cast as string, or a letter in order to compose the hexadecimal colour
-# TODO - Refactor into one line http://stackoverflow.com/questions/18414907/constraining-random-hex-colour-generator-to-a-certain-range-of-colours
-def generate_rand_char_for_hex():
-    rand_option = random.randint(0,1)
-    if rand_option == 0:
-        return str(random.randint(0,9))
-    else:
-        return random.choice(string.ascii_lowercase[0:6])
-
+# http://stackoverflow.com/questions/18414907/constraining-random-hex-colour-generator-to-a-certain-range-of-colours
 def generate_rand_color():
-    hex_array = range(6) # initialize array with 6 elements
-    for i in hex_array:
-        hex_array[i] = generate_rand_char_for_hex()
-    return str("#" + "".join(hex_array))
+    return '#{:06x}'.format(random.randint(0x0000ff, 0x00ffff)) # red and some green turned off
 
 def draw_art():
     canvas = turtle.Screen() # TurtleScreen object
@@ -90,10 +88,10 @@ def draw_art():
         player1.color(generate_rand_color())
         player1.speed("0") # very fast
         player1.setposition(start_position_x, start_position_y)
-        for i in range (0, 36):
+        for i in range (0, ROTATIONS):
             move_dist = move_dist_random(bounds_w, bounds_h, start_position_x, start_position_y)
             draw_square(player1, move_dist)
-            player1.right(10)
+            player1.right(ANGLE)
 
     canvas.exitonclick()
 
