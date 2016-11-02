@@ -1,3 +1,4 @@
+import fresh_tomatoes
 import media
 
 rambo = media.Movie("Rambo",
@@ -7,4 +8,6 @@ rambo = media.Movie("Rambo",
 
 print ("Rambo description: %s") % (rambo.description)
 
-rambo.show_trailer()
+# rambo.show_trailer()
+movies = [rambo]
+fresh_tomatoes.open_movies_page(movies)
