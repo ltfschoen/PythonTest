@@ -7,3 +7,13 @@ messages = {
 urls = {
     "so": "https://stackoverflow.com/users/3208553/luke-schoen"
 }
+shape = {
+    "rectangle": {
+        "sides": 4,
+        "angle": 90
+    },
+    "octagon": {
+        "sides": 8,
+        "angle": 45
+    }
+}

@@ -27,9 +27,15 @@ pip install -U pytest
 Run Apps
 -------
 - Written in Python 2.7
+- Copy your present working directory `pwd` and paste it into below to add directory to $PYTHONPATH, since Python does not add the current directory to sys.path
+```
+export PYTHONPATH=$PYTHONPATH:<paste_pwd>
+```
+
 ```
 python ./break_time.py
 python ./file_handler.py
+python ./movie_set/main.py
 ```
 
 Run Unit Tests

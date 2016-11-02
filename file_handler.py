@@ -31,7 +31,7 @@ def rename_files():
         # generate new random file suffix until it does not match any numbers already in the filename
         while file_handler_util.random_number_already_exists_in_filename(filename, random_filename_suffix):
             random_filename_suffix = str(randint(0,99))
-            
+
         new_filename_random_no = file_handler_util.remove_numbers_from_filename_and_append_rand_int(filename, random_filename_suffix)
         new_filename = file_handler_util.replace_non_numbers_with_rand_chars(new_filename_random_no)
         updated_file_list = rename_filename(samples_folder_name, samples_absolute_path, filename, new_filename)

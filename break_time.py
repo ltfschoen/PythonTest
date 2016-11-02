@@ -11,8 +11,8 @@ print ("Env keys: %s") % (os.environ.keys())
 # IMPORT CUSTOM FILES
 import site
 print ("Importing subfolder: %s") % (sys.path[0]+'/helpers')
-site.addsitedir(sys.path[0]+'/helpers')  
-import reusable
+site.addsitedir(sys.path[0]+'/helpers')
+from helpers import reusable # __init__.py required in the helpers subdirectory
 
 again = "y"
 break_limit = 3
