@@ -9,12 +9,12 @@ def get_main_path():
     split_on_char = "/"
     return split_on_char.join(test_path.split(split_on_char)[:-1])
 main_path = get_main_path()
-site.addsitedir(main_path+'/util')
+site.addsitedir(main_path)
 from util import python_version
 
 print ( ("Imported subfolder: {}/util".format(main_path)) if (python_version.current_version() == 3) else ("Imported subfolder: %s") % (main_path+'/util') )
 
-import file_handler_util
+from util import file_handler_util
 
 # UNIT TESTS - EXPERIMENTAL
 
