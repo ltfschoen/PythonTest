@@ -12,9 +12,13 @@ def get_main_path():
     split_on_char = "/"
     return split_on_char.join(app_path.split(split_on_char)[:-1])
 main_path = get_main_path()
-print ("Importing subfolder: %s") % (main_path+'/helpers')
+print (main_path)
 site.addsitedir(main_path+'/helpers')
+site.addsitedir(main_path+'/util')
 from helpers import reusable # __init__.py required in the helpers subdirectory
+from util import python_version
+print ( ("Imported subfolder: {}/helpers".format(sys.path[0])) if (python_version.current_version() == 3) else ("Imported subfolder: %s") % (main_path+'/helpers') )
+print ( ("Imported subfolder: {}/util".format(sys.path[0])) if (python_version.current_version() == 3) else ("Imported subfolder: %s") % (sys.path[0]+'/util') )
 
 # Settings
 REPLAY_QTY = 100
@@ -64,7 +68,7 @@ def generate_rand_boundary(current_bgcolor):
     boundary.goto(-bounds_w/2, bounds_h/2)
     boundary.shape("arrow")
     boundary.color("white")
-    boundary.speed("0")
+    boundary.speed(float(0))
     draw_boundary(boundary, bounds_w, bounds_h)
     boundary.color(current_bgcolor)
     boundary.home()
@@ -86,7 +90,7 @@ def draw_art():
         player1 = turtle.Turtle() # instance. within Python there is a file called turtle with a Turtle class. We call its __init__ function to create an instance of it
         player1.shape("turtle")
         player1.color(generate_rand_color())
-        player1.speed("0") # very fast
+        player1.speed(float(0)) # very fast
         player1.setposition(start_position_x, start_position_y)
         for i in range (0, ROTATIONS):
             move_dist = move_dist_random(bounds_w, bounds_h, start_position_x, start_position_y)

@@ -5,8 +5,12 @@ def get_main_path():
     split_on_char = "/"
     return split_on_char.join(app_path.split(split_on_char)[:-1])
 main_path = get_main_path()
-print ("Importing main folder: %s") % (main_path)
 site.addsitedir(main_path)
+site.addsitedir(main_path+'/util')
+from util import python_version
+
+print ( ("Importing main folder: {}".format(main_path)) if (python_version.current_version() == 3) else ("Importing main folder: %s") % (main_path) )
+
 import settings
 
 from twilio.rest import TwilioRestClient

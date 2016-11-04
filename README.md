@@ -3,7 +3,7 @@ README
 
 About
 -------
-- Purpose: Learning Python 2.7.
+- Purpose: Learning Python 2.7 and 3.5.
 - Integrated:
 
 * [x] PyDash library (similar to Lodash for JS)
@@ -16,20 +16,42 @@ Travic CI Build Status: [![Build Status](https://api.travis-ci.org/ltfschoen/Pyt
 
 Setup
 -------
-- Install codebase and dependencies
+- [Install Python 2 or 3 from download or with Homebrew](https://www.python.org/downloads/)
+- Python 2.7 installation with Homebrew (note that `brew install python` installs Python 2.7)
+```
+brew search python
+brew install python
+```
+
+- Python 3.5.2 installation with Homebrew
+```
+brew install python3
+brew linkapps python3
+```
+- Note: Python 3.5.2 and Pip and setuptools are installed with following commands available
+```
+pip3 install --upgrade pip setuptools
+```
+- Globally install Python 3.5.2 packages into the site-package `/usr/local/lib/python3.5/site-packages`:
+```
+pip3 install <package>
+```
+
+- Install codebase
 ```
 git clone https://github.com/ltfschoen/PythonTest && cd PythonTest
-brew install python
-pip install pydash
-pip install -U pytest
-pip install twilio
-pip install -U python-dotenv
+pip install --upgrade pip
+```
+
+- Install dependencies 
+```
+pip install -r requirements.txt
 ```
 
 Run Apps
 -------
-- Written in Python 2.7
-- Copy your present working directory `pwd` and paste it into below to add directory to $PYTHONPATH, since Python does not add the current directory to sys.path
+- **Important Note**: All programs written in Python 2.7. Only break_time.py has been converted to support both Python 2.7 and 3.5 so far.
+- Copy your present working directory `pwd` and paste it into below to add directory to $PYTHONPATH, since Python does not add the current directory to sys.path. If you do not do this you may get an error like `ImportError: No module named helpers` when you run a program
 ```
 export PYTHONPATH=$PYTHONPATH:<paste_pwd>
 echo $PYTHONPATH
@@ -61,3 +83,8 @@ Run Unit Tests
 ```
 pytest -v
 ```
+
+Known bugs
+----------
+- Running profanity_detector/main.py with Python 3.5 instead of 2.7 gives HTTP request error
+- Running test_file_handler_util_remove_numbers_from_filename_and_append_rand_int() currently only working for Python 2.7
