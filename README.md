@@ -48,6 +48,18 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
+Switch to Relevant Virtualenv
+-----------------------------
+* List Virtualenvs previously created
+```
+ls $WORKON_HOME
+```
+
+* Switch to a listed Virtualenv that you have created, i.e.
+```
+workon python_test_env_3.6.0
+```
+
 Run Apps
 -------
 - **Important Note**: All programs written in Python 2.7. Only break_time.py has been converted to support both Python 2.7 and 3.5 so far.
